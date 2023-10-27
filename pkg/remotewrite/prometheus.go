@@ -1,6 +1,7 @@
 package remotewrite
 
 import (
+	"fmt"
 	"sort"
 	"strings"
 
@@ -29,6 +30,7 @@ func MapTagSet(t *metrics.TagSet) []*prompb.Label {
 		key = strings.Replace(key, "::", "", -1)
 		labels = append(labels, &prompb.Label{Name: key, Value: value})
 	}
+	fmt.Printf('%s', labels)
 	return labels
 }
 
