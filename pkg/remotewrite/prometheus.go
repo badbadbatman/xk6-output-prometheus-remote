@@ -2,6 +2,7 @@ package remotewrite
 
 import (
 	"sort"
+	"strings"
 
 	prompb "buf.build/gen/go/prometheus/prometheus/protocolbuffers/go"
 	"github.com/mstoykov/atlas"
@@ -25,6 +26,7 @@ func MapTagSet(t *metrics.TagSet) []*prompb.Label {
 		if key == "" || value == "" {
 			continue
 		}
+		key = strings.Replace(key, "::", "", -1)
 		labels = append(labels, &prompb.Label{Name: key, Value: value})
 	}
 	return labels
