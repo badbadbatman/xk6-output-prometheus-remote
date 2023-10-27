@@ -27,7 +27,7 @@ func MapTagSet(t *metrics.TagSet) []*prompb.Label {
 		if key == "" || value == "" {
 			continue
 		}
-		key = strings.Replace(key, "::", "", -1)
+		value = strings.Replace(value, "::", "", -1)
 		labels = append(labels, &prompb.Label{Name: key, Value: value})
 	}
 	fmt.Println(labels)
